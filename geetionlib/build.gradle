@@ -4,6 +4,7 @@ apply plugin: 'com.neenbedankt.android-apt'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
+    useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
@@ -19,19 +20,17 @@ android {
     }
     buildTypes {
         release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "boolean", "USE_CANARY", "false"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-}
-
-buildscript {
-    repositories {
-        jcenter()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "${rootProject.ext.android.LOG_DEBUG}"
+            buildConfigField "boolean", "USE_CANARY", "${rootProject.ext.android.USE_CANARY}"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
 }
 
@@ -59,6 +58,8 @@ dependencies {
     compile rootProject.ext.dependencies["glide"]
     compile rootProject.ext.dependencies["eventbus"]
     compile rootProject.ext.dependencies["autolayout"]
+    compile rootProject.ext.dependencies["paginate"]
+    apt rootProject.ext.dependencies["butterknife-apt"]
     compile(rootProject.ext.dependencies["butterknife"]) {
         exclude module: 'support-annotations'
     }
@@ -94,6 +95,7 @@ dependencies {
     compile(rootProject.ext.dependencies["retrofit-adapter-rxjava"]) {
         exclude module: 'rxjava'
     }
+    provided rootProject.ext.dependencies["javax-annotation"]
     compile rootProject.ext.dependencies["dagger2"]
     apt rootProject.ext.dependencies["dagger2-apt-compiler"]
     compile(project(':errorhandler')) {

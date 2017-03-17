@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.app.Application;
 import android.os.Bundle;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import static com.vzan.geetionlib.base.BaseActivity.IS_ADD_ACTIVITY_MANAGER_LIST;
 
 /**
@@ -12,10 +15,12 @@ import static com.vzan.geetionlib.base.BaseActivity.IS_ADD_ACTIVITY_MANAGER_LIST
  * @date 2017/3/11 0011.
  * Email:w710989327@foxmail.com
  */
+@Singleton
 public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks {
     private ActivityManager mActivityManager;
 
-    public ActivityLifecycle(ActivityManager activityManager){
+    @Inject
+    public ActivityLifecycle(ActivityManager activityManager) {
         this.mActivityManager = activityManager;
     }
 
@@ -26,6 +31,8 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
         boolean isNotAdd = false;
         if (activity.getIntent() != null)
             isNotAdd = activity.getIntent().getBooleanExtra(IS_ADD_ACTIVITY_MANAGER_LIST, false);
+        if (!isNotAdd)
+            mActivityManager.addActivity(activity);
     }
 
     @Override
@@ -35,12 +42,14 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
 
     @Override
     public void onActivityResumed(Activity activity) {
-
+        mActivityManager.setCurrentActivity(activity);
     }
 
     @Override
     public void onActivityPaused(Activity activity) {
-
+        if (mActivityManager.getCurrentActivity() == activity) {
+            mActivityManager.setCurrentActivity(null);
+        }
     }
 
     @Override
@@ -55,6 +64,6 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
 
     @Override
     public void onActivityDestroyed(Activity activity) {
-
+        mActivityManager.removeActivity(activity);
     }
 }

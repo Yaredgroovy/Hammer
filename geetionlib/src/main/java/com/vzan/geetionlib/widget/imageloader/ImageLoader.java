@@ -11,7 +11,7 @@ import javax.inject.Singleton;
  * Email:w710989327@foxmail.com
  */
 @Singleton
-public class ImageLoader {
+public final class ImageLoader {
     private BaseImageLoaderStrategy mStrategy;
     @Inject
     public ImageLoader(BaseImageLoaderStrategy strategy){
@@ -24,5 +24,9 @@ public class ImageLoader {
 
     public <T extends ImageConfig> void clearImage(Context context, T config) {
         this.mStrategy.clearImage(context, config);
+    }
+
+    public void setLoadImgStrategy(BaseImageLoaderStrategy strategy) {
+        this.mStrategy = strategy;
     }
 }

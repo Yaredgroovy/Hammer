@@ -13,7 +13,7 @@ import dagger.Component;
  * Email:w710989327@foxmail.com
  */
 @Singleton
-@Component(modules = {AppModule.class})
+@Component(modules={AppModule.class})
 public interface BaseComponent {
     void inject(BaseApplication application);
 }

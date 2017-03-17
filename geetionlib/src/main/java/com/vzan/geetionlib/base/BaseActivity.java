@@ -44,6 +44,7 @@ public abstract class BaseActivity<P extends Presenter> extends RxAppCompatActiv
         mApplication = (BaseApplication) getApplication();
         if (useEventBus())
             EventBus.getDefault().register(this);
+        Initialization();
         setContentView(getResourceId());
         mUnbinder = ButterKnife.bind(this);
         initView();
@@ -84,6 +85,9 @@ public abstract class BaseActivity<P extends Presenter> extends RxAppCompatActiv
     protected boolean useEventBus() {
         return false;
     }
+
+    /** 初始化一些任务 */
+    protected abstract void Initialization();
 
     /** 依赖注入的入口 */
     protected abstract void ComponentInject();

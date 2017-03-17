@@ -20,6 +20,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "${rootProject.ext.android.LOG_DEBUG}"
+            buildConfigField "boolean", "USE_CANARY", "${rootProject.ext.android.USE_CANARY}"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
 }
 

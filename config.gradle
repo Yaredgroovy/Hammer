@@ -1,5 +1,8 @@
 ext {
     android = [
+            LOG_DEBUG        : true,
+            USE_CANARY       : true,
+
             compileSdkVersion: 25,
             buildToolsVersion: "25.0.2",
 
@@ -14,37 +17,44 @@ ext {
             javaVersion      : JavaVersion.VERSION_1_8
     ]
     dependencies = [
-            "support-v4"                : "com.android.support:support-v4:${android["supportVersion"]}",
-            "recyclerview-v7"           : "com.android.support:recyclerview-v7:${android["supportVersion"]}",
-            "appcompat-v7"              : "com.android.support:appcompat-v7:${android["supportVersion"]}",
-            "design"                    : "com.android.support:design:${android["supportVersion"]}",
-            "annotations"               : "com.android.support:support-annotations:${android["supportVersion"]}",
+            "support-v4"             : "com.android.support:support-v4:${android["supportVersion"]}",
+            "recyclerview-v7"        : "com.android.support:recyclerview-v7:${android["supportVersion"]}",
+            "appcompat-v7"           : "com.android.support:appcompat-v7:${android["supportVersion"]}",
+            "design"                 : "com.android.support:design:${android["supportVersion"]}",
+            "annotations"            : "com.android.support:support-annotations:${android["supportVersion"]}",
 
-            "butterknife"               : "com.jakewharton:butterknife:8.5.1",
-            "butterknife-apt"           : "com.jakewharton:butterknife-compiler:8.5.1",
+            "butterknife"            : "com.jakewharton:butterknife:8.5.1",
+            "butterknife-apt"        : "com.jakewharton:butterknife-compiler:8.5.1",
 
-            "glide"                     : "com.github.bumptech.glide:glide:3.7.0",
-            "gson"                      : "com.google.code.gson:gson:2.7",
-            "logger"                    : 'com.orhanobut:logger:1.15',
-            "eventbus"                  : 'org.simple:androideventbus:1.0.5.1',
-            "autolayout"                : "com.zhy:autolayout:1.4.5",
+            "glide"                  : "com.github.bumptech.glide:glide:3.7.0",
+            "gson"                   : "com.google.code.gson:gson:2.7",
+            "logger"                 : 'com.orhanobut:logger:1.15',
+            "eventbus"               : 'org.simple:androideventbus:1.0.5.1',
+            "autolayout"             : "com.zhy:autolayout:1.4.5",
+            "paginate"               : "com.github.markomilos:paginate:0.5.1",
 
             // rx
-            "rxjava"                    : "io.reactivex:rxjava:1.2.6",
-            "rxandroid"                 : "io.reactivex:rxandroid:1.2.1",
-            "rxlifecycle"               : "com.trello:rxlifecycle:1.0",
-            "rxlifecycle-components"    : "com.trello:rxlifecycle-components:1.0",
-            "rxpermissions"             : "com.tbruyelle.rxpermissions:rxpermissions:0.9.3@aar",
-            "rxcache"                   : "com.github.VictorAlbertos.RxCache:runtime:1.8.0-2.x",
-            "rxcache-jolyglot-gson"     : "com.github.VictorAlbertos.Jolyglot:gson:0.0.3",
+            "rxjava"                 : "io.reactivex:rxjava:1.2.6",
+            "rxandroid"              : "io.reactivex:rxandroid:1.2.1",
+            "rxlifecycle"            : "com.trello:rxlifecycle:1.0",
+            "rxlifecycle-components" : "com.trello:rxlifecycle-components:1.0",
+            "rxpermissions"          : "com.tbruyelle.rxpermissions:rxpermissions:0.9.3@aar",
+            "rxcache"                : "com.github.VictorAlbertos.RxCache:runtime:1.8.0-2.x",
+            "rxcache-jolyglot-gson"  : "com.github.VictorAlbertos.Jolyglot:gson:0.0.3",
 
             // 注解
-            "dagger2"                   : "com.google.dagger:dagger:2.8",
-            "dagger2-apt-compiler"      : "com.google.dagger:dagger-compiler:2.8",
+            "javax-annotation"       : 'javax.annotation:jsr250-api:1.0',
+            "dagger2"                : "com.google.dagger:dagger:2.8",
+            "dagger2-apt-compiler"   : "com.google.dagger:dagger-compiler:2.8",
 
-            "retrofit"                  : "com.squareup.retrofit2:retrofit:2.1.0",
-            "retrofit-converter-gson"   : "com.squareup.retrofit2:converter-gson:2.1.0",
-            "retrofit-adapter-rxjava"   : "com.squareup.retrofit2:adapter-rxjava:2.1.0",
-            "okhttp3"                   : "com.squareup.okhttp3:okhttp:3.6.0",
+            "retrofit"               : "com.squareup.retrofit2:retrofit:2.1.0",
+            "retrofit-converter-gson": "com.squareup.retrofit2:converter-gson:2.1.0",
+            "retrofit-adapter-rxjava": "com.squareup.retrofit2:adapter-rxjava:2.1.0",
+            "okhttp3"                : "com.squareup.okhttp3:okhttp:3.6.0",
+
+            // leakcanary
+            "canary-debug"           : "com.squareup.leakcanary:leakcanary-android:1.5",
+            "canary-release"         : "com.squareup.leakcanary:leakcanary-android-no-op:1.5",
+            "canary-test"            : "com.squareup.leakcanary:leakcanary-android-no-op:1.5"
     ]
 }

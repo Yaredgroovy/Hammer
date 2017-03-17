@@ -98,8 +98,6 @@ public class ClientModule {
     }
 
 
-
-
     @Singleton
     @Provides
     Interceptor provideIntercept(RequestIntercept intercept) {
@@ -157,7 +155,7 @@ public class ClientModule {
      */
     @Singleton
     @Provides
-    ActivityManager provideAppManager() {
+    ActivityManager provideActivityManager() {
         return mActivityManager;
     }
 }
