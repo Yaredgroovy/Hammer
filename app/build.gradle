@@ -13,9 +13,9 @@ android {
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-//        jackOptions {
-//            enabled true   // 支持java8
-//        }
+        jackOptions {
+            enabled true   // 支持java8
+        }
     }
     compileOptions {
         sourceCompatibility rootProject.ext.android.javaVersion
