@@ -23,7 +23,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder<T>>
     }
 
     @Override
-    public BaseHolder<T> onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseHolder<T> onCreateViewHolder(ViewGroup parent,final int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(getLayoutId(viewType), parent, false);
         mHolder = getHolder(view, viewType);
         mHolder.setOnItemClickListener(new BaseHolder.OnViewClickListener() {//设置Item点击事件

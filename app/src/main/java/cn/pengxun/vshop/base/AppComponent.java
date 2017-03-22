@@ -5,15 +5,15 @@ import android.app.Application;
 import com.vzan.errorhandler.RxErrorHandler;
 import com.vzan.geetionlib.base.ActivityManager;
 import com.vzan.geetionlib.di.module.AppModule;
-import com.vzan.geetionlib.di.module.CacheModule;
 import com.vzan.geetionlib.di.module.ClientModule;
 import com.vzan.geetionlib.di.module.GlobalConfigModule;
 import com.vzan.geetionlib.di.module.ImageModule;
-import com.vzan.geetionlib.di.module.ServiceModule;
 import com.vzan.geetionlib.widget.imageloader.ImageLoader;
 
 import javax.inject.Singleton;
 
+import cn.pengxun.vshop.di.module.CacheModule;
+import cn.pengxun.vshop.di.module.ServiceModule;
 import cn.pengxun.vshop.mvp.model.api.cache.CacheManager;
 import cn.pengxun.vshop.mvp.model.api.service.ServiceManager;
 import dagger.Component;

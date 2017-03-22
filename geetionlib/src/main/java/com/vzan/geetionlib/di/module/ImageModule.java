@@ -18,7 +18,7 @@ public class ImageModule {
 
     @Singleton
     @Provides
-    public BaseImageLoaderStrategy provideImageLoaderStrategy(GlideImageLoaderStrategy
+    BaseImageLoaderStrategy provideImageLoaderStrategy(GlideImageLoaderStrategy
                                                                       glideImageLoaderStrategy) {
         return glideImageLoaderStrategy;
     }

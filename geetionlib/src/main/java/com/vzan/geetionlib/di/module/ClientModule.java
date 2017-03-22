@@ -17,7 +17,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import io.rx_cache2.internal.RxCache;
+import io.rx_cache.internal.RxCache;
 import io.victoralbertos.jolyglot.GsonSpeaker;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
@@ -27,7 +27,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * @author liu-feng 
+ * @author liu-feng
  * @date 2017/3/11 0011.
  * Email:w710989327@foxmail.com
  */
@@ -79,8 +79,7 @@ public class ClientModule {
                 builder.addInterceptor(interceptor);
             }
         }
-        return builder
-                .build();
+        return builder.build();
     }
 
 
@@ -139,7 +138,7 @@ public class ClientModule {
      */
     @Singleton
     @Provides
-    RxErrorHandler proRxErrorHandler(Application application, ResponseErrorListener listener) {
+    RxErrorHandler provideRxErrorHandler(Application application, ResponseErrorListener listener) {
         return RxErrorHandler
                 .builder()
                 .with(application)

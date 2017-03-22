@@ -16,6 +16,7 @@ import butterknife.BindView;
 import cn.pengxun.vshop.R;
 import cn.pengxun.vshop.base.AppComponent;
 import cn.pengxun.vshop.base.VZActivity;
+import cn.pengxun.vshop.di.component.DaggerUserComponent;
 import cn.pengxun.vshop.di.module.UserModule;
 import cn.pengxun.vshop.mvp.contract.UserContract;
 import cn.pengxun.vshop.mvp.presenter.UserPresenter;
@@ -24,7 +25,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
 /**
- * @author liu-feng 
+ * @author liu-feng
  * @date 2017/3/13 0013.
  * Email:w710989327@foxmail.com
  */
@@ -64,17 +65,22 @@ public class UserActivity extends VZActivity<UserPresenter> implements UserContr
     @Override
     protected void setupActivityComponent(AppComponent appComponent) {
         this.rxPermissions = new RxPermissions(this);
-        DaggerUserComponent.builder()
+        DaggerUserComponent
+                .builder()
                 .appComponent(appComponent)
                 .userModule(new UserModule(this))
-                .build().inject(this);
+                .build()
+                .inject(this);
     }
 
     @Override
     public void showLoading() {
         Observable.just(1).observeOn(AndroidSchedulers.mainThread())
-                .subscribe((Action1) (integer) -> {
-                    mSwipeRefreshLayout.setRefreshing(true);
+                .subscribe(new Action1<Integer>() {
+                    @Override
+                    public void call(Integer integer) {
+                        mSwipeRefreshLayout.setRefreshing(true);
+                    }
                 });
     }
 

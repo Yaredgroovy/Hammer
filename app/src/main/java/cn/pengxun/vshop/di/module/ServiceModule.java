@@ -1,9 +1,8 @@
-package com.vzan.geetionlib.di.module;
-
-import com.vzan.geetionlib.interf.CommonService;
+package cn.pengxun.vshop.di.module;
 
 import javax.inject.Singleton;
 
+import cn.pengxun.vshop.mvp.model.api.service.ApiService;
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -18,7 +17,7 @@ public class ServiceModule {
 
     @Singleton
     @Provides
-    CommonService provideApiService(Retrofit retrofit){
-        return retrofit.create(CommonService.class);
+    ApiService provideApiService(Retrofit retrofit){
+        return retrofit.create(ApiService.class);
     }
 }

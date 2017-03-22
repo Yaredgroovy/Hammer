@@ -16,10 +16,11 @@ import android.support.annotation.ColorRes;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.animation.Animation;
+import android.widget.ImageView;
 
 import com.vzan.geetionlib.R;
 
-public class CircleProgressView extends android.support.v7.widget.AppCompatImageView {
+public class CircleProgressView extends ImageView {
     private static final int KEY_SHADOW_COLOR = 0x1E000000;
     private static final int FILL_SHADOW_COLOR = 0x3D000000;
     // PX

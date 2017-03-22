@@ -6,6 +6,7 @@ import android.content.Context;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
 import com.vzan.geetionlib.BuildConfig;
+import com.vzan.geetionlib.di.component.DaggerBaseComponent;
 import com.vzan.geetionlib.di.module.AppModule;
 import com.vzan.geetionlib.di.module.ClientModule;
 import com.vzan.geetionlib.di.module.GlobalConfigModule;
@@ -46,11 +47,11 @@ public abstract class BaseApplication extends Application {
         mApplication = this;
         Logger.init("GeetionLib").logLevel(BuildConfig.LOG_DEBUG ? LogLevel.FULL : LogLevel.NONE);
         this.mAppModule = new AppModule(this);
-//        DaggerBaseComponent
-//                .builder()
-//                .appModule(mAppModule)
-//                .build()
-//                .inject(this);
+        DaggerBaseComponent
+                .builder()
+                .appModule(mAppModule)
+                .build()
+                .inject(this);
         this.mImageModule = new ImageModule(); // 初始化图片加载框架 glide
         this.mClientModule = new ClientModule(mActivityManager);
         this.mGlobalConfigModule = Preconditions.checkNotNull(getGlobalConfigModule(),

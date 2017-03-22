@@ -1,7 +1,5 @@
 package cn.pengxun.vshop.mvp.model.api.service;
 
-import com.vzan.geetionlib.interf.CommonService;
-
 import java.util.List;
 
 import cn.pengxun.vshop.mvp.model.entity.UserEntity;
@@ -15,7 +13,7 @@ import rx.Observable;
  * @date 2017/3/13 0013.
  * Email:w710989327@foxmail.com
  */
-public interface ApiService extends CommonService {
+public interface ApiService {
 
     // example
     String HEADER_API_VERSION = "Accept: application/vnd.github.v3+json";

@@ -11,9 +11,9 @@ import cn.pengxun.vshop.mvp.contract.UserContract;
 import cn.pengxun.vshop.mvp.model.api.cache.CacheManager;
 import cn.pengxun.vshop.mvp.model.api.service.ServiceManager;
 import cn.pengxun.vshop.mvp.model.entity.UserEntity;
-import io.rx_cache2.DynamicKey;
-import io.rx_cache2.EvictDynamicKey;
-import io.rx_cache2.Reply;
+import io.rx_cache.DynamicKey;
+import io.rx_cache.EvictDynamicKey;
+import io.rx_cache.Reply;
 import rx.Observable;
 import rx.functions.Func1;
 

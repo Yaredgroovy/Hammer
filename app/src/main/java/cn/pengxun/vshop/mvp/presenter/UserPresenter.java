@@ -25,7 +25,7 @@ import rx.functions.Action0;
 import rx.schedulers.Schedulers;
 
 /**
- * @author liu-feng 
+ * @author liu-feng
  * @date 2017/3/13 0013.
  * Email:w710989327@foxmail.com
  */
@@ -62,19 +62,22 @@ public class UserPresenter extends BasePresenter<UserContract.Model, UserContrac
         if (refresh) lastUserId = 1; // 下拉刷新
         // 当下拉刷新时，不需要使用缓存，从网络获取
         boolean isEvictCache = refresh;
-        if (refresh && isEvictCache) {
+        if (refresh && isFirst) {
             //默认第一次下拉刷新时使用缓存
             isFirst = false;
             isEvictCache = false;
         }
         mModel.getUsers(lastUserId, isEvictCache).subscribeOn(Schedulers.io())
                 .retryWhen(new RetryWithDelay(3, 2))
-                .doOnSubscribe(() -> {
-                    if (refresh)
-                        mRootView.showLoading(); // 显示下拉刷新的进度条
-                    else
-                        mRootView.startLoadMore();
-                    ; // 显示上拉加载更多的进度条
+                .doOnSubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        if (refresh)
+                            mRootView.showLoading(); // 显示下拉刷新的进度条
+                        else
+                            mRootView.startLoadMore();
+                        ; // 显示上拉加载更多的进度条
+                    }
                 }).subscribeOn(AndroidSchedulers.mainThread())
                 .doAfterTerminate(new Action0() {
                     @Override
@@ -86,14 +89,16 @@ public class UserPresenter extends BasePresenter<UserContract.Model, UserContrac
                     }
                 })
                 //使用RXlifecycle,使subscription和activity一起销毁
-                .compose(RxUtils.bindToLifecycle(mRootView))
+                .compose(RxUtils.<List<UserEntity>>bindToLifecycle(mRootView))
                 .subscribe(new ErrorHandlerSubscriber<List<UserEntity>>(rxErrorHandler) {
                     @Override
                     public void onNext(List<UserEntity> userEntities) {
                         // 记录最后一个ID，用于下次请求
                         lastUserId = userEntities.get(userEntities.size() - 1).getId(); //
                         if (refresh) mUsers.clear();
-                        mUsers.addAll(userEntities);
+                        for (UserEntity user : userEntities) { // ArrayList warring add List Data
+                            mUsers.add(user);
+                        }
                         mAdapter.notifyDataSetChanged();
                     }
                 });

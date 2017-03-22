@@ -4,7 +4,6 @@ apply plugin: 'com.neenbedankt.android-apt'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
-    useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
@@ -36,9 +35,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
     testCompile 'junit:junit:4.12'
     compile(rootProject.ext.dependencies["support-v4"]) {
         exclude module: 'support-annotations'
@@ -54,6 +50,7 @@ dependencies {
         exclude module: 'support-annotations'
     }
     compile rootProject.ext.dependencies["annotations"]
+    compile rootProject.ext.dependencies["gson"]
     compile rootProject.ext.dependencies["logger"]
     compile rootProject.ext.dependencies["glide"]
     compile rootProject.ext.dependencies["eventbus"]
@@ -96,6 +93,7 @@ dependencies {
         exclude module: 'rxjava'
     }
     provided rootProject.ext.dependencies["javax-annotation"]
+    provided 'org.glassfish:javax.annotation:10.0-b28'
     compile rootProject.ext.dependencies["dagger2"]
     apt rootProject.ext.dependencies["dagger2-apt-compiler"]
     compile(project(':errorhandler')) {

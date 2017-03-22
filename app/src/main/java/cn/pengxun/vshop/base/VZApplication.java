@@ -8,9 +8,9 @@ import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import com.vzan.errorhandler.handler.ResponseErrorListener;
 import com.vzan.geetionlib.base.BaseApplication;
-import com.vzan.geetionlib.di.module.CacheModule;
+import cn.pengxun.vshop.di.module.CacheModule;
 import com.vzan.geetionlib.di.module.GlobalConfigModule;
-import com.vzan.geetionlib.di.module.ServiceModule;
+import cn.pengxun.vshop.di.module.ServiceModule;
 import com.vzan.geetionlib.http.GlobalHttpHandler;
 import com.vzan.geetionlib.utils.UiUtils;
 

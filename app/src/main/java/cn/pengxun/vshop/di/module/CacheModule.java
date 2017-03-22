@@ -1,12 +1,11 @@
-package com.vzan.geetionlib.di.module;
-
-import com.vzan.geetionlib.interf.CommonCache;
+package cn.pengxun.vshop.di.module;
 
 import javax.inject.Singleton;
 
+import cn.pengxun.vshop.mvp.model.api.cache.ApiCache;
 import dagger.Module;
 import dagger.Provides;
-import io.rx_cache2.internal.RxCache;
+import io.rx_cache.internal.RxCache;
 
 /**
  * @author liu-feng 
@@ -18,7 +17,7 @@ public class CacheModule {
 
     @Singleton
     @Provides
-    CommonCache provideCommonCache(RxCache rxCache) {
-        return rxCache.using(CommonCache.class);
+    ApiCache provideCommonCache(RxCache rxCache) {
+        return rxCache.using(ApiCache.class);
     }
 }
